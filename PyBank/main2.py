@@ -18,7 +18,6 @@ with open(budget_csv,'r') as csvfile:
 
 
 
-
     #Make list with all Profit/Loss values
     
     PLlist = []
@@ -72,28 +71,18 @@ with open(budget_csv,'r') as csvfile:
 
     ChangeList2.pop()
 
+    #Calculate Average change
 
-        
+    AverageChange = round(sum(ChangeList2) / len(ChangeList2), 2)
 
-    print(ChangeList2)
-    
+    #Find greatest increase in profit
 
-    
+    MaxProfInc = max(ChangeList2)
 
-        
+    #Find greatest decrease in profit
 
-
-
-
+    MaxProfDec = min(ChangeList2)
 
 
-
-    
-
-    
-
-
-
-
-
-
+    print("Financial Analysis")
+    print("------------------------")
