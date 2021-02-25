@@ -84,7 +84,7 @@ with open(budget_csv,'r') as csvfile:
     for row in csvreader:
         if row[1] == MaxProfInc:
             MaxProfMonth = row[0]
-            print(str(MaxProfMonth))
+            
 
     #Find greatest decrease in profit
 
