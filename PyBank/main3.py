@@ -65,12 +65,30 @@ with open(budget_csv,'r') as csvfile:
     print('-----------------------')
     print('Total Months: ' + str(TotalMonths))
     print('Average Change: $' + str(AverageChange))
-    print('Greatest Increase in Profits: ' + str(MaxIncMonth) + ' $' + '(' + str(MaxProfInc) + ')')
-    print('Greatest Decrease in Profits: ' + str(MaxDecMonth) + ' $' + '(' + str(MaxProfDec) + ')')
+    print('Greatest Increase in Profits: ' + str(MaxIncMonth) + ' (' +'$' +  str(MaxProfInc) + ')')
+    print('Greatest Decrease in Profits: ' + str(MaxDecMonth) + ' (' +'$' + str(MaxProfDec) + ')')
     print('`````')
 
 
 
+# Path to analysis
+output_file = os.path.join("analysis", "PyBank.csv")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_file,'wb') as PyBank:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(PyBank, delimiter=',')
+
+    # Write the first row (column headers)
+    csvwriter.writerow(['``````'])
+    csvwriter.writerow(['Financial Analysis'])
+    csvwriter.writerow(['-----------------------'])
+    csvwriter.writerow(['Total Months: ' + str(TotalMonths)])
+    csvwriter.writerow(['Average Change: $' + str(AverageChange)])
+    csvwriter.writerow(['Greatest Increase in Profits: ' + str(MaxIncMonth) + ' (' + '$' + str(MaxProfInc) + ')'])
+    csvwriter.writerow(['Greatest Decrease in Profits: ' + str(MaxDecMonth) + ' (' + '$' + str(MaxProfDec) + ')'])
+    csvwriter.writerow(['`````'])
 
 
 

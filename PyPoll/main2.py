@@ -89,7 +89,3 @@ with open(election_csv,'r') as csvfile:
     
 
 
-    #print(TotalVoters)
-    #print(CandList)
-    #print(CandCount)
-    #print(VotePct)
