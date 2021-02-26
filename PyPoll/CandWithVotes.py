@@ -60,30 +60,16 @@ with open(election_csv,'r') as csvfile:
     CandCount.append(Cand3)
     CandCount.append(Cand4)
 
+
+    #Calculate vote percentages
+
+    
+
+
+    print(CandList)
     print(CandCount)
         
 
-
-
-    #for row in csvreader:
-        #if row[2] == str('Khan'):
-           # Khan += 1
-        
-    #print(Khan)
-        
-        #elif row[2] == str(CandList[1]):
-            #Cand2 += 1
-        
-        #elif row[2] == str(CandList[2]):
-            #Cand3 += 1
-
-        #elif row[2] == str(CandList[3]):
-            #Cand4 += 1
-    
-    #print(Cand1)
-    #print(Cand2)
-    #print(Cand3)
-    #print(Cand4)
 
 
     

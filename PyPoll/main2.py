@@ -18,14 +18,25 @@ with open(election_csv,'r') as csvfile:
 
     #Calculate total months
 
-    TotalVoters = len(list(csvreader))
+    #TotalVoters = len(list(csvreader))
+
 
     #List candidates with votes
 
     CandList = []
     TotalCandList = []
+    TotalVoters = 0
+    Cand1 = 0
+    Cand2 = 0
+    Cand3 = 0
+    Cand4 = 0
+    CandCount = []
+    VotePct = []
 
     for row in csvreader:
+
+        #Calculate total voters
+        TotalVoters += 1
 
         #Make list of candidates
         TotalCandList.append(row[2])
@@ -36,17 +47,8 @@ with open(election_csv,'r') as csvfile:
             CandList.append(row[2])
         
             
-    
-    
-
     #Count votes for each candidate
-
-    Cand1 = 0
-    Cand2 = 0
-    Cand3 = 0
-    Cand4 = 0
-    CandCount = []
-
+    
     for i in TotalCandList:
         if i == CandList[0]:
             Cand1 += 1
@@ -65,16 +67,14 @@ with open(election_csv,'r') as csvfile:
     CandCount.append(Cand3)
     CandCount.append(Cand4)
 
-
     #Calculate vote percentages
 
-    VotePct = []
-
     for i in CandCount:
-        Pct = (i/TotalVoters)*100
+        Pct = float(i)/float(TotalVoters) * 100
         VotePct.append(Pct)
 
-    
+  
+
 
     print(TotalVoters)
     print(CandList)
