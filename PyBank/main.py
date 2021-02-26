@@ -16,83 +16,80 @@ with open(budget_csv,'r') as csvfile:
     next(csvreader)
 
 
+    #Sum up profit/loss and create list with all profit/loss values
 
-
-    #Make list with all Profit/Loss values
-    
+    SumPL = 0
     PLlist = []
-
+    Changelist = []
+    TotalMonths = 0
+    Monthlist = []
+    
+ 
+    
     for row in csvreader:
-        PLlist.append(row[1])
+        TotalMonths += 1
+        SumPL += int(row[1])
+        PLlist.append(int(row[1]))
+        Monthlist.append(str(row[0]))
 
-    
-    #Split Profit/Loss List over even and odd indices to calculate change
-    PLodd = PLlist[::2]
-    PLeven = PLlist[1::2]
-
-    #Need to eliminate first element of the odds list to generate second list of changes
-    PLodd2 = PLodd.copy()
-    PLodd2.pop(0)
-
-    
-
-    #create even-odd change lists
-    EminO = []
-    OminE = []
-    for even, odd in zip(PLeven, PLodd):
-        ChangeEO = int(even) - int(odd)
-        EminO.append(ChangeEO)
-
-    for odd, even in zip(PLodd2, PLeven):
-        ChangeOE = int(odd) - int(even)
-        OminE.append(ChangeOE)
-
-    #Append 0 to Odd minus Even change list to have same amount of values in both Odd minus Even and Even minus Odd lists.
-    #This is important when we merge with zip as the last value won't be excluded.
-
-    OminE.append(0)
-
-    
-    #Merge the change lists into a full change list
-
-    ChangeZip = zip(EminO,OminE)
-
-    # Convert zip to list 
-
-    ChangeList = []
-
-    for i in ChangeZip:
-        for j in i:
-            ChangeList.append(j)
-
-    #Remove 0 again from ChangeList
-
-    ChangeList2 = ChangeList.copy()
-
-    ChangeList2.pop()
-
-
-        
-
-    print(ChangeList2)
-    
-
-    
-
-        
-
-
-
-
-
+    for i in range(len(PLlist) - 1):
+        Change = PLlist[i+1] - PLlist[i]
+        Changelist.append(Change)
 
 
     
+    #Find months with max increase and max decline
 
-    
+    MaxIncMonth = Monthlist[Changelist.index(max(Changelist)) + 1]
+
+    MaxDecMonth = Monthlist[Changelist.index(min(Changelist)) + 1]
+
+ 
+
+    #Calculate Average change
+
+    AverageChange = round(sum(Changelist) / len(Changelist), 2)
+
+
+    #Find greatest increase in profit
+
+    MaxProfInc = max(Changelist)
+
+
+    #Find greatest decrease in profit
+
+    MaxProfDec = min(Changelist)
+
+    print('`````')
+    print('Financial Analysis')
+    print('-----------------------')
+    print('Total Months: ' + str(TotalMonths))
+    print('Average Change: $' + str(AverageChange))
+    print('Greatest Increase in Profits: ' + str(MaxIncMonth) + ' (' +'$' +  str(MaxProfInc) + ')')
+    print('Greatest Decrease in Profits: ' + str(MaxDecMonth) + ' (' +'$' + str(MaxProfDec) + ')')
+    print('`````')
 
 
 
+# Path to analysis
+output_file = os.path.join("analysis", "PyBank.txt")
+
+# Open the file using "write" mode.
+with open(output_file,'wb') as PyBank:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(PyBank, delimiter=',')
+
+    # Write the rows
+    csvwriter.writerow(['``````'])
+    csvwriter.writerow(['Financial Analysis'])
+    csvwriter.writerow(['-----------------------'])
+    csvwriter.writerow(['Total Months: ' + str(TotalMonths)])
+    csvwriter.writerow(['Average Change: $' + str(AverageChange)])
+    csvwriter.writerow(['Greatest Increase in Profits: ' + str(MaxIncMonth) + ' (' + '$' + str(MaxProfInc) + ')'])
+    csvwriter.writerow(['Greatest Decrease in Profits: ' + str(MaxDecMonth) + ' (' + '$' + str(MaxProfDec) + ')'])
+    csvwriter.writerow(['`````'])
 
 
 
+   
