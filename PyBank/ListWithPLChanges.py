@@ -36,7 +36,7 @@ with open(budget_csv,'r') as csvfile:
 
     
 
-    #create even-odd change lists
+    #create even-odd change lists (list of tuples with zip)
     EminO = []
     OminE = []
     for even, odd in zip(PLeven, PLodd):

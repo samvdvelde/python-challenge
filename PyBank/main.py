@@ -18,7 +18,6 @@ with open(budget_csv,'r') as csvfile:
 
 
 
-
     #Make list with all Profit/Loss values
     
     PLlist = []
