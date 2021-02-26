@@ -38,14 +38,13 @@ with open(budget_csv,'r') as csvfile:
 
 
     
-    
+    #Find months with max increase and max decline
 
     MaxIncMonth = Monthlist[Changelist.index(max(Changelist)) + 1]
 
     MaxDecMonth = Monthlist[Changelist.index(min(Changelist)) + 1]
 
-    print(MaxIncMonth)
-    print(MaxDecMonth)
+ 
 
     #Calculate Average change
 
@@ -61,15 +60,18 @@ with open(budget_csv,'r') as csvfile:
 
     MaxProfDec = min(Changelist)
 
-    #Find MaxChange and MinChange months
+    print('`````')
+    print('Financial Analysis')
+    print('-----------------------')
+    print('Total Months: ' + str(TotalMonths))
+    print('Average Change: $' + str(AverageChange))
+    print('Greatest Increase in Profits: ' + str(MaxIncMonth) + ' $' + '(' + str(MaxProfInc) + ')')
+    print('Greatest Decrease in Profits: ' + str(MaxDecMonth) + ' $' + '(' + str(MaxProfDec) + ')')
+    print('`````')
 
 
 
 
 
-    #print(TotalMonths)
-    #print(SumPL)
-    #print(AverageChange)
-    #print(MaxProfInc)
-    #print(MaxProfDec)
-    #print(MaxProfIncMonth)
+
+   
