@@ -16,12 +16,10 @@ with open(election_csv,'r') as csvfile:
     next(csvreader)
 
 
-    #Calculate total months
-
-    #TotalVoters = len(list(csvreader))
 
 
-    #List candidates with votes
+
+    #Set variables for candidates and vote counts
 
     CandList = []
     TotalCandList = []
