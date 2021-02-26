@@ -70,13 +70,26 @@ with open(election_csv,'r') as csvfile:
     #Calculate vote percentages
 
     for i in CandCount:
-        Pct = float(i)/float(TotalVoters) * 100
+        Pct = round(float(float(i)/float(TotalVoters) * 100),3)
         VotePct.append(Pct)
 
+    #Get winner
+    Winner = CandList[CandCount.index(max(CandCount))]
   
+    print('`````')
+    print('Election Results')
+    print('-----------------------')
+    print('Total Votes: ' + str(TotalVoters))
+    print('-----------------------')
+    for cand, pct, count in zip(CandList, VotePct, CandCount):
+        print('{}: {}% ({})'.format(cand, pct, count))
+    print('-----------------------')
+    print('Winner: ' + str(Winner))
+    print('-----------------------')
+    
 
 
-    print(TotalVoters)
-    print(CandList)
-    print(CandCount)
-    print(VotePct)
+    #print(TotalVoters)
+    #print(CandList)
+    #print(CandCount)
+    #print(VotePct)
